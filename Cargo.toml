@@ -1,6 +1,6 @@
 [package]
 name = "niv-ui-kit"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Swift-style, easy-to-use UI kit for Rust, built on egui (the egui-like half; mainkit is the eframe-like half)."
 license = "MIT"
