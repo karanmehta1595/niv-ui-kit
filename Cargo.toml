@@ -5,6 +5,8 @@ edition = "2021"
 description = "Swift-style, easy-to-use UI kit for Rust, built on egui (the egui-like half; mainkit is the eframe-like half)."
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/karanmehta1595/niv-ui-kit"
+homepage = "https://github.com/karanmehta1595/niv-ui-kit"
 
 [dependencies]
 # Phase 1: egui is pinned and re-exported. Users never add their own egui line.
