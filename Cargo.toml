@@ -1,0 +1,34 @@
+[package]
+name = "niv-ui-kit"
+version = "0.1.0"
+edition = "2021"
+description = "Swift-style, easy-to-use UI kit for Rust, built on egui (the egui-like half; mainkit is the eframe-like half)."
+license = "MIT"
+readme = "README.md"
+
+[dependencies]
+# Phase 1: egui is pinned and re-exported. Users never add their own egui line.
+egui = { version = "0.37", optional = true }
+egui_extras = { version = "0.37", optional = true }
+egui_bg_layer = { version = "0.37", features = ["glow"], optional = true }
+# Terminal widget: asli shell chalane ke liye (apps ko ye alag se nahi jodna)
+portable-pty = "0.9.0"
+
+[target.'cfg(target_os = "macos")'.dependencies]
+# macOS: blur behind a separate Window (found by its title)
+objc2 = "0.6"
+objc2-foundation = { version = "0.3", default-features = false, features = ["std", "NSArray", "NSString"] }
+objc2-app-kit = { version = "0.3", default-features = false, features = ["std", "NSApplication", "NSGraphics", "NSResponder", "NSWindow"] }
+
+[features]
+# Kuch na likho to latest supported egui (0.37) chalega.
+default = ["egui-0-37"]
+egui-0-37 = ["dep:egui", "dep:egui_extras", "dep:egui_bg_layer"]
+# Naam reserved hai; code tab aayega jab 0.37 wale Step 0-4 test ho jayein.
+egui-0-36 = []
+# Sab image/svg loaders ek saath.
+all_loaders = ["egui-0-37", "egui_extras/all_loaders"]
+
+[dev-dependencies]
+egui = { version = "0.37", features = ["persistence"] }
+ron = "0.11"
